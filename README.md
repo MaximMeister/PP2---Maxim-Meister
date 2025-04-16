@@ -72,7 +72,7 @@ Try accessing the `return_value` identifier without prepending `$`.
 
 <details>
     <summary>You Answer</summary>
-    ......
+Bei der Eingabe "echo return_value" gibt die Konsole nur den Text "return_value" aus. Da das $ fehlt erfolgt nur die Ausgabe des Strings, so wie er dort steht. Mit dem $ wird der Shell angegeben, dass der Inhalt aus dem Identifier / Wert der Variable angezeigt werden soll
 </details>
 
 ### Task 3: Function-Identifiers
@@ -98,7 +98,8 @@ and pressing `enter`.
 <details>
     <summary>Calling a Function</summary>
     Include a screenshot of your function-call!
-</details>
+
+![Screenshot 2025-04-16 203737](https://github.com/user-attachments/assets/893413b7-f6c5-42aa-a450-9ee274d2129a)
 
 ### Task 4: Handling Parameters
 A function, that always does the same is also called a _constant_ function.
@@ -260,8 +261,21 @@ These examples demonstrate various fundamental operations in Bash scripting, inc
 
 **Write a function, combining at least 3 different of these primitives to a function**
 <details>
-    <summary>Your Function</summary>
+
+    df_func () {
+    var1=$1
+    var2=$2
+    var3=$3
+
+    result=$((var1 * var2 * var3))
+    modulo=$((result % 3))
+    division=$(echo "scale=2; $modulo / 3" | bc)
+
+    echo "$division"
+    } 
     
+    ![image](https://github.com/user-attachments/assets/3eeeeedf-e792-4345-9c09-07100c52e925)
+
 ```bash
 your code
 ```
@@ -300,8 +314,7 @@ cat ./function
 
 **What happend?**
 <details>
-    <summary>Your Explaination</summary>
-    .....
+Zunächst war ich mir etwas unsicher, was tatsächlich am Ende in cat ./functions gespeichert wurde und habe dann eigentlich nur durch googeln von append herausgefunden, dass dies anhängen bedeutet. Da am Ende in cat ./functions beide Funktionen df_func und df_func2 zu finden waren; weiß ich auch nun, dass mit den Operator > die Datei mit der neuen Funktion überschrieben wird. Wohingegend mit dem Operator >> die weitere Funktion in die Datei nur Hinzugefügt / Angehängt (append) wird.
 
 </details>
 
@@ -343,8 +356,8 @@ You can use a shorthand within your calls to add this string as a prefix to any 
 
 **Look at task 6 again. What is the complete filepath of your functions file?**
 <details>
-    <summary>Your Answer</summary>
-    ....
+/home/maxm/functions auch mit der Eingabe realpath ./functions wird weiterhin /home/maxm/functions ausgegeben
+Ich verwende die WSL Funktion von Windows in Verbindung mit Ubuntu
 </details>
 
 All filenames start with a `/`. 
@@ -367,9 +380,18 @@ cd /
 ```
 **Run `ls` again and insert the content here:**
 <details>
-    <summary>Your Answer</summary>
-    ....
+   maxm@FractalDesignR6:~$ cd /
+maxm@FractalDesignR6:/$ ls
+bin                dev   init               lib64       mnt   root  sbin.usr-is-merged  sys  var
+bin.usr-is-merged  etc   lib                lost+found  opt   run   snap                tmp
+boot               home  lib.usr-is-merged  media       proc  sbin  srv                 usr
+
+
+![Screenshot 2025-04-16 221141](https://github.com/user-attachments/assets/1f64762b-3f4c-4ad9-8eae-cdb56c6ccb09)
+
+
 </details>
+
 
 Now navigate through your filesystem using `cd` and the name of the directory you want to set as your new `pwd`.
 Run `pwd` from time to time, to make sure you understand what happens.
@@ -382,10 +404,18 @@ Use `rm` to delete a file and `rm -rf` to delete a directory.
 
 **Add a directory into your `~` dir and create an empty file in it. Delete the directory again.**
 <details>
-    <summary>Your Terminal Output</summary>
-```bash
-your terminal output
-```
+maxm@FractalDesignR6:/$ cd ~
+maxm@FractalDesignR6:~$ pwd
+/home/maxm
+maxm@FractalDesignR6:~$ mkdir test
+maxm@FractalDesignR6:~$ cd test
+maxm@FractalDesignR6:~/test$ touch datei.txt
+maxm@FractalDesignR6:~/test$ cd ~
+maxm@FractalDesignR6:~$ rm -rf test
+maxm@FractalDesignR6:~$ cd test
+-bash: cd: test: No such file or directory
+maxm@FractalDesignR6:~$
+    
 </details>
 
 ### Task 10: Managing Software
@@ -438,11 +468,15 @@ When you finished that tutorial, open a file in your home directory and manipula
 
 **How do you save a buffer to a new filename from within `vim`?**
 <details>
-    <summary>Your Answer</summary>
-    .....
-</details>
- 
-
+Wenn man sich bereits in Vim befindet und die aktuelle (geöffnete) Textdatei bearbeitet hat und diese Änderungen in einer neuen separatgen Datei speichern möchte, vergewissere ich mich, dass ich mich im "Normal Mode" befinde, alternativ verwende ich "ESC" um in diesen Modus zu gelangen. Dann verwende ioch den Befehl :w und gebe den neuen Dateinamen ein; als Bsp. :w änderungen.txt (mit ENTER bestätigen). Damit werden die Änderungen innerhalb des "buffers" unter neuen Namen in die Datei änderungen.txt gespeichert.
+Anschließen gibt es 2 Möglichkeiten: 
+1. :q -> um Vim zu schliesen
+2. :wq -> um zu speiern und Vim zu schliesen
 ---
 
 **Remember:** Stop working after 90 minutes and record where you stopped!
+
+Anmerkungen für die Zeit, ich habe Zwischenzeitig die Stoppuhr etwas aus den Augen verloren, als ich Schwierigkeiten hatte mein Passwort für den sudo Befehl für die Installation für Vim einzugeben. Ich schätze ich habe etwa 5 bis 10 Minuten gebraucht, bis ich eine Lösung im Internet gefunden habe und diese umsetzen konnte (Über Windows Powershell, das Passwort zurückzusetzen). Als ich diesen Text hier beende bin ich bei 104min.
+![Screenshot 2025-04-16 230841](https://github.com/user-attachments/assets/fe398bef-ad6c-4485-9aa7-0c2bf702b771)
+
+
